@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Jahnavi ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  background:#12002b;
+  color:white;
+  font-family:Poppins;
+  text-align:center;
+  overflow-x:hidden;
+}
+h1{
+  font-family:'Great Vibes';
+  font-size:48px;
+}
+section{
+  padding:50px 20px;
+}
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+}
+.hidden{display:none;}
+
+img{
+  width:90%;
+  max-width:300px;
+  border-radius:20px;
+  margin:10px;
+}
+
+.heart{
+  position:fixed;
+  color:red;
+  animation:float 6s linear infinite;
+}
+@keyframes float{
+  from{bottom:-10%;opacity:1;}
+  to{bottom:110%;opacity:0;}
+}
+
+.firework{
+  position:fixed;
+  width:6px;
+  height:6px;
+  background:gold;
+  border-radius:50%;
+  animation:boom 1.5s ease-out infinite;
+}
+@keyframes boom{
+  from{transform:scale(0);}
+  to{transform:scale(25);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy New Year, My Forever ❤️</h1>
+
+<button onclick="startMusic()">▶ Start With Music</button>
+
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<section>
+<h2>Countdown to Our New Year 🎆</h2>
+<h1 id="timer"></h1>
+</section>
+
+<section>
+<h2>Our Story 💞</h2>
+<p>
+We didn’t meet by chance…  
+One unexpected message —  
+<b>“Hey, this is Jahnavi from Paul’s”</b>  
+sent to my mom’s Instagram —  
+and my entire life changed forever.
+<br><br>
+You stood against the world,  
+against fear, against family,  
+just to choose <b>us</b>.
+<br><br>
+Your smile gives me strength on my weakest days.
+</p>
+</section>
+
+<section>
+<h2>Our Memories 📸</h2>
+<img src="photos/one.jpg">
+<img src="photos/two.jpg">
+<img src="photos/three.jpg">
+<img src="photos/four.jpg">
+<img src="photos/five.jpg">
+</section>
+
+<section>
+<h2>Answer Honestly ❤️</h2>
+<p>Will you be with me forever?</p>
+<button onclick="nextQuestion()">Yes ❤️</button>
+</section>
+
+<section id="q2" class="hidden">
+<p>Are you happy with me?</p>
+<button onclick="unlockSecret()">Very Happy 💖</button>
+</section>
+
+<section id="secret" class="hidden">
+<h2>🔐 Secret Letter</h2>
+<p>
+If loving you was a choice,  
+I would choose you in every lifetime.  
+Not because it’s easy —  
+but because it’s you.
+</p>
+</section>
+
+<section>
+<h1>💍 Will You Marry Me?</h1>
+<button onclick="fireworks()">YES 💍</button>
+</section>
+
+<script>
+// MUSIC
+function startMusic(){
+ document.getElementById("music").play();
+}
+
+// COUNTDOWN
+const newYear = new Date("Jan 1, 2026 00:00:00").getTime();
+setInterval(()=>{
+ let now = new Date().getTime();
+ let d = newYear - now;
+ document.getElementById("timer").innerHTML =
+ Math.floor(d/(1000*60*60*24))+"d "+
+ Math.floor(d/(1000*60*60)%24)+"h "+
+ Math.floor(d/(1000*60)%60)+"m "+
+ Math.floor(d/1000%60)+"s";
+},1000);
+
+// HEARTS
+setInterval(()=>{
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="❤️";
+ h.style.left=Math.random()*100+"%";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},400);
+
+// QUESTIONS
+function nextQuestion(){
+ document.getElementById("q2").classList.remove("hidden");
+}
+function unlockSecret(){
+ document.getElementById("secret").classList.remove("hidden");
+}
+
+// FIREWORKS
+function fireworks(){
+ setInterval(()=>{
+  let f=document.createElement("div");
+  f.className="firework";
+  f.style.left=Math.random()*100+"%";
+  f.style.top=Math.random()*100+"%";
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),1500);
+ },300);
+}
+</script>
+
+</body>
+</html>
